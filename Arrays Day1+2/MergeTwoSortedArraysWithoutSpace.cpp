@@ -24,6 +24,10 @@ void merge(int ar1[], int ar2[], int m, int n)
 	}
 }
 
+1 2 3 4
+1 2 6
+
+
 
 GAP Method
 

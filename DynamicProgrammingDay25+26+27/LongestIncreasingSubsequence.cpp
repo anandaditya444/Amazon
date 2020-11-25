@@ -23,3 +23,19 @@ void LIS(int cur, int prev)
 		return ans = 1 + LIS(cur + 1, arr[cur]);
 	return ans = LIS(cur + 1, prev);
 }
+
+
+
+
+int LIS(int cur, int prev)
+{
+	if (cur > n)
+		return memo[cur] = 0;
+	int &val = memo[cur];
+
+	if (val != -1)
+		return val;
+	if (arr[cur] > prev)
+		return memo[cur] = 1 + LIS(cur + 1, arr[cur]);
+	return memo[cur] = LIS(cur + 1, prev);
+}

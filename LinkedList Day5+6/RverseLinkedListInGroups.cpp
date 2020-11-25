@@ -1,5 +1,11 @@
 
 
+Time Complexity: O(n).
+
+Auxiliary Space: O(n / k).
+For each Linked List of size n, n / k or (n / k) + 1 calls will be made during the recursion.
+
+
 Node* reverseInGroups(Node* head, int K)
 {
 	Node* cur = head;

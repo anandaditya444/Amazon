@@ -22,6 +22,7 @@ void BellmanFord(Graph* graph, int src)
 
 	for (int i = 0; i < V; i++)
 		dist[i] = INT_MAX;
+
 	dist[src] = 0;
 
 	Updating for the minimum distance

@@ -2,8 +2,11 @@
 
 Time - O(E*LogV)
 
+The code finds shortest distances from source to all vertices. If we are interested only in shortest distance
+from the source to a single target, we can break the for the loop when the picked minimum distance vertex is
+equal to target (Step 3.a of the algorithm).
 
-void Dijkstra(list< pair<int, int> > adj)
+	void Dijkstra(list< pair<int, int> > adj, int src)
 {
 	set<pair<int, int> >s;
 	int dist[V];

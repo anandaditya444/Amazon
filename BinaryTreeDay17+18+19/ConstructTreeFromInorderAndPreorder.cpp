@@ -124,3 +124,48 @@ struct Node* buildTree(char in[], char pre[], int inStrt,
 
 	/* Else find the index of this node in Inorder traversal */
 	int inIndex = mp[curr];
+}
+
+
+
+
+
+
+struct Node* newNode(int data)
+{
+	struct Node* node = new Node;
+	node->data = data;
+	node->left = node->right = NULL;
+	return node;
+}
+
+
+int searchInorder(char in[], int ele, int start, int end)
+{
+	int i;
+	for (i = start; i <= end; i++)
+		if (in[i] == ele)
+			return i;
+}
+
+Node* constructTree(char pre[], char in[], int start, int end)
+{
+	if (start > end)
+		return NULL;
+	static int index = 0;
+	char ele = pre[index++];
+
+	index = searchInorder(in, ele, start, end);
+
+	Node* tnode = new Node;
+	tnode->data = ele;
+
+
+	if (start == end)
+		return tnode;
+
+	tnode->left = constructTree(pre, in, start, index - 1);
+	tnode->right = constructTree(pre, in, index + 1, end);
+
+	return tnode;
+}

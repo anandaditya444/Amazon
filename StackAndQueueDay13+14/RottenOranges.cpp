@@ -15,7 +15,7 @@ public:
 		{
 			for (int j = 0; j < c; j++)
 			{
-				if (grid[i][j] == 1)
+				if (grid[i][j] == 2)
 					q.push({i, j});
 			}
 		}

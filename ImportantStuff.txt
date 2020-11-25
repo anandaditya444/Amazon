@@ -1,0 +1,112 @@
+The Protocol Data Unit(PDU) of the transport layer is called segment. Now a device using PAR resend the data unit until it receives an acknowledgement. If the data unit received at the receiver’s end is damaged(It checks the data with checksum functionality of the transport layer that is used for Error Detection), then receiver discards the segment. So the sender has to resend the data unit for which positive acknowledgement is not received. You can realize from above mechanism that three segments are exchanged between sender(client) and receiver(server) for a reliable TCP connection to get established. 
+
+Step 1 (SYN) : In the first step, client wants to establish a connection with server, so it sends a segment with SYN(Synchronize Sequence Number) which informs server that client is likely to start communication and with what sequence number it starts segments with
+
+Step 2 (SYN + ACK): Server responds to the client request with SYN-ACK signal bits set. Acknowledgement(ACK) signifies the response of segment it received and SYN signifies with what sequence number it is likely to start the segments with
+
+Step 3 (ACK) : In the final part client acknowledges the response of server and they both establish a reliable connection with which they will start the actual data transfer
+The steps 1, 2 establish the connection parameter (sequence number) for one direction and it is acknowledged. The steps 2, 3 establish the connection parameter (sequence number) for the other direction and it is acknowledged. With these, a full-duplex communication is established.
+
+
+https://www.geeksforgeeks.org/differences-between-tcp-and-udp/
+
+APSTNDP - OSI model
+ATIN - TCP/IP
+
+DNS Resolution - https://www.liquidweb.com/kb/how-to-demystify-the-dns-process/
+
+Session & Cookies - https://www.tutorialspoint.com/What-is-the-difference-between-session-and-cookies#:~:text=Cookies%20and%20Sessions%20are%20used,as%20well%20as%20a%20server.&text=A%20session%20creates%20a%20file,and%20their%20values%20are%20stored.
+
+Virtual Memory - https://afteracademy.com/blog/what-is-virtual-memory-and-how-is-it-implemented
+
+Paging:
+In Operating Systems, Paging is a storage mechanism used to retrieve processes from the secondary storage into the main memory in the form of pages.
+
+The main idea behind the paging is to divide each process in the form of pages. The main memory will also be divided in the form of frames.
+
+One page of the process is to be stored in one of the frames of the memory. The pages can be stored at the different locations of the memory but the priority is always to find the contiguous frames or holes.
+
+Segmentation:
+In Operating Systems, Segmentation is a memory management technique in which, the memory is divided into the variable size parts. Each part is known as segment which can be allocated to a process.
+
+The details about each segment are stored in a table called as segment table. Segment table is stored in one (or many) of the segments.
+
+Advantages of Segmentation –
+
+No Internal fragmentation.
+Segment Table consumes less space in comparison to Page table in paging.
+Disadvantage of Segmentation –
+
+As processes are loaded and removed from the memory, the free memory space is broken into little pieces, causing External fragmentation.
+
+Page Fault:
+A page fault occurs when a program attempts to access data or code that is in its address space, but is not currently located in the system RAM.
+
+Handling of a Page Fault:
+Check the location of the referenced page in the PMT
+If a page fault occured, call on the operating system to fix it
+Using the frame replacement algorithm, find the frame location
+Read the data from disk to memory
+Update the page map table for the process
+The instruction that caused the page fault is restarted when the process resumes execution.
+
+
+Thrashing:
+Thrashing is a condition or a situation when the system is spending a major portion of its time in servicing the page faults, but the actual processing done is very negligible.
+
+The basic concept involved is that if a process is allocated too few frames, then there will be too many and too frequent page faults. As a result, no useful work would be done by the CPU and the CPU utilisation would fall drastically. The long-term scheduler would then try to improve the CPU utilisation by loading some more processes into the memory thereby increasing the degree of multiprogramming. This would result in a further decrease in the CPU utilization triggering a chained reaction of higher page faults followed by an increase in the degree of multiprogramming, called Thrashing.
+
+Belady's Anamoly
+Bélády’s anomaly is the name given to the phenomenon where increasing the number of page frames results in an increase in the number of page faults for a given memory access pattern.
+
+This phenomenon is commonly experienced in following page replacement algorithms:
+First in first out (FIFO)
+Second chance algorithm
+Random page replacement algorithm
+
+Reason of Belady’s Anomaly –
+The other two commonly used page replacement algorithms are Optimal and LRU, but Belady’s Anamoly can never occur in these algorithms for any reference string as they belong to a class of stack based page replacement algorithms.
+
+A stack based algorithm is one for which it can be shown that the set of pages in memory for N frames is always a subset of the set of pages that would be in memory with N + 1 frames. For LRU replacement, the set of pages in memory would be the n most recently referenced pages. If the number of frames increases then these n pages will still be the most recently referenced and so, will still be in the memory. While in FIFO, if a page named b came into physical memory before a page – a then priority of replacement of b is greater than that of a, but this is not independent of the number of page frames and hence, FIFO does not follow a stack page replacement policy and therefore suffers Belady’s Anomaly.
+
+Semaphore - https://www.geeksforgeeks.org/semaphores-in-process-synchronization/
+
+Semaphore vs Mutex - https://www.tutorialspoint.com/mutex-vs-semaphore#:~:text=Mutex%20is%20a%20mutual%20exclusion%20object%20that%20synchronizes%20access%20to%20a%20resource.&text=A%20Mutex%20is%20different%20than,be%20used%20as%20a%20semaphore.
+
+Critical Section - https://www.geeksforgeeks.org/g-fact-70/
+
+Deadlock - https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/
+
+Race Conditon:
+A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.
+
+ACID Properties:
+https://www.geeksforgeeks.org/acid-properties-in-dbms/
+
+Transactions:
+Transactions group a set of tasks into a single execution unit. Each transaction begins with a specific task and ends when all the tasks in the group successfully complete. If any of the tasks fail, the transaction fails. Therefore, a transaction has only two results: success or failure
+
+Normalization:
+https://beginnersbook.com/2015/05/normalization-in-dbms/
+
+Indexing in DBMS:
+https://www.tutorialspoint.com/dbms/dbms_indexing.htm
+
+
+How Internet Works ?
+
+The Internet is a global computer network for communication – actually nothing more than a basic computer network. The Internet simply moves data from one place to another, so that we can chat, browse and share.
+
+Data moves over the Internet in a manner called “packet switching.” What packet switching basically does is send your data in separate pieces – each tagged with your intended destination. Once all of the pieces reach their target, they are reassembled into – voila! – your email. Packets flow by many routes, each determined by the quickest and most efficient at the time you send your email.
+
+If you had a permanent connection to the intended destination or if your email traveled as a whole instead of in pieces, an entire portion of the network would be blocked every time you sent a message. With packet switching, many people can use the Internet at the same time.
+
+There are millions upon millions of servers on the Internet. Servers store information. There are file servers, mail servers and web servers. The Internet is also made up of routers. Routers simply make connections between different systems. For instance, at work or school, where several computers are networked, you are connected to one router – a single point of entry for the Internet.
+
+See, it really is simple!
+
+Why Amazon ?
+Amazon is the leader in e-commerce, and looking for leaders who have a passion for satisfy their customers. I want to be apart of a team that strives to provide each customer with a positive experience.
+And i am a person who can work hard, who loves doing fun activities and would prefer to make history.
+“I really believe the vision that making Amazon the Earth’s most customer-centric company more than anyone and I wanted to be a part of it on it’s pursuit which is the reason and motivation driving me to join Amazon.”
+And I've heard a lot about amazon's culture through my seniors and i think I’m a guy of same trait which motivates me to join the workplace where I feel belonged.”

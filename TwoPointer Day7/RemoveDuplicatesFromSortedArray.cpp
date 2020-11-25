@@ -1,6 +1,6 @@
 
 Time - O(n)
-Space - O(n)
+Space - O(1)
 
 int remove_duplicate(int a[], int N)
 {

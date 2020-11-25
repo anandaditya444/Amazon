@@ -50,3 +50,40 @@ Node* clone(Node* head)
 	}
 	return temp;
 }
+
+
+
+
+void clone(Node* head)
+{
+	Node* cur = head;
+	Node* temp;
+
+	while (cur != NULL)
+	{
+		temp = cur->next;
+		cur->next = new Node(cur->data);
+		cur->next->next = temp;
+		cur = temp;
+	}
+
+	cur = head;
+
+	while (cur)
+	{
+		if (cur->next)
+			cur->next->random = cur->random ? cur->random->next : cur->random;
+		cur = cur->next ? cur->next->next : cur->next;
+	}
+
+	Node* original = head, *copy = head->next;
+
+	while (original && copy)
+	{
+		original->next = original->next ? original->next->next : original->next;
+		copy->next = copy->next ? copy->next->next : copy->next;
+
+		original = original->next;
+		copy = copy->next;
+	}
+}
