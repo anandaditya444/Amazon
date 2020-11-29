@@ -14,7 +14,7 @@ public:
             queue<pair<int, int> >q;
             q.push({x, y});
             vis[x][y] = 1;
-            char val = grid[x][y];
+            //char val = grid[x][y];
             while (!q.empty())
             {
                 int x = q.front().first;
@@ -26,9 +26,7 @@ public:
                     int nx = x + dx[dir];
                     int ny = y + dy[dir];
 
-                    if (nx < 0 || nx > n - 1 || ny < 0 || ny > m - 1)
-                        continue;
-                    if (grid[nx][ny] != val)
+                    if (nx < 0 || nx > n - 1 || ny < 0 || ny > m - 1 || grid[nx][ny] != '1')
                         continue;
                     if (!vis[nx][ny])
                     {

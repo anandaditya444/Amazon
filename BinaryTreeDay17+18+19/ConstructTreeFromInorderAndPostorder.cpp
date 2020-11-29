@@ -43,8 +43,9 @@ Node* buildUtil(int in[], int post[], int inStrt,
 
   /* Using index in Inorder traversal, construct left and
      right subtress */
-  node->right = buildUtil(in, post, iIndex + 1, inEnd, pIndex);
   node->left = buildUtil(in, post, inStrt, iIndex - 1, pIndex);
+  node->right = buildUtil(in, post, iIndex + 1, inEnd, pIndex);
+
 
   return node;
 }
@@ -76,4 +77,31 @@ Node* newNode(int data)
   node->data = data;
   node->left = node->right = NULL;
   return (node);
+}
+
+int search(Node* root, int inorder[], int start, int end)
+{
+  for (int i = start; i <= end; i++)
+    if (inorder[i] == root->val)
+      return i;
+}
+
+Node* constructTree(int postorder[], int inorder[], int start, int end)
+{
+  if (start > end)
+    return NULL;
+
+  static int idx = n - 1;
+
+  Node* node = new Node(postorder[idx--]);
+
+  if (start == end)
+    return node;
+
+  int idxInorder = search(node, inorder, start, end);
+
+  constructTree(postorder, inorder, start, idxInorder - 1);
+  constructTree(postorder, inorder, idxInorder + 1, end);
+
+  return node;
 }

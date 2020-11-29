@@ -6,36 +6,29 @@ memo[N] - forr memoization purpose
 
 Time - O(N*N)
 
-LIS(0, -1e12)  -- Function Call
 
-memset(memo, -1, sizeof(memo));
-
-void LIS(int cur, int prev)
+int LIS(vector<int>&nums, int* lis, int n)
 {
-	if (cur > n)
-		return 0;
-	int &ans = memo[cur];
+	//int n = nums.size();
+	for (int i = 0; i < n; i++)
+		lis[i] = 1;
 
-	if (ans != -1)
-		return ans;
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			if (nums[i] > nums[j] && lis[i] < lis[j] + 1)
+			{
+				lis[i] = lis[j] + 1;
+			}
+		}
+	}
 
-	if (arr[cur] > prev)
-		return ans = 1 + LIS(cur + 1, arr[cur]);
-	return ans = LIS(cur + 1, prev);
-}
+	int max = lis[0];
+	for (int i = 1; i < n; i++)
+		if (max < lis[i])
+			max = lis[i];
 
+	return max;
 
-
-
-int LIS(int cur, int prev)
-{
-	if (cur > n)
-		return memo[cur] = 0;
-	int &val = memo[cur];
-
-	if (val != -1)
-		return val;
-	if (arr[cur] > prev)
-		return memo[cur] = 1 + LIS(cur + 1, arr[cur]);
-	return memo[cur] = LIS(cur + 1, prev);
 }
