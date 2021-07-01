@@ -21,7 +21,7 @@ int count( int S[], int m, int n )
 		return 0;
 
 	// count is sum of solutions (i)
-	// including S[m-1] (ii) excluding S[m-1]
+	// excluding S[m-1] (ii) including S[m-1]
 	return count( S, m - 1, n ) + count( S, m, n - S[m - 1] );
 }
 
